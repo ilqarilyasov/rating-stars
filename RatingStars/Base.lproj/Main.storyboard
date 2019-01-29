@@ -1,24 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QGX-Gl-gfQ">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Navigation Controller-->
+        <scene sceneID="nZv-Jd-Lq4">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <navigationController id="QGX-Gl-gfQ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="2RM-gb-Z4m">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="cta-bj-BrO" kind="relationship" relationship="rootViewController" id="NBr-2Q-hw1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bKL-Ds-sUz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18" y="28"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="vxb-L3-fGv">
+            <objects>
+                <viewController id="cta-bj-BrO" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dOa-GG-PUb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <view verifyAmbiguity="ignoreSizes" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AxD-Tx-tM4" customClass="CustomControl" customModule="RatingStars" customModuleProvider="target">
+                                <rect key="frame" x="16" y="273.5" width="343" height="120"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="HZd-dg-P5u"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="updateRating:" destination="uhj-uv-yVq" eventType="valueChanged" id="BPS-dF-HHw"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92156857250000002" green="0.92156863209999995" blue="0.92156857250000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="AxD-Tx-tM4" secondAttribute="trailing" constant="16" id="aa5-wt-odd"/>
+                            <constraint firstItem="AxD-Tx-tM4" firstAttribute="centerY" secondItem="dOa-GG-PUb" secondAttribute="centerY" id="hwK-H3-hQ0"/>
+                            <constraint firstItem="AxD-Tx-tM4" firstAttribute="centerX" secondItem="dOa-GG-PUb" secondAttribute="centerX" id="khY-bH-Mlb"/>
+                            <constraint firstItem="AxD-Tx-tM4" firstAttribute="leading" secondItem="dOa-GG-PUb" secondAttribute="leading" constant="16" id="uf8-Oe-oli"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="k5b-dq-kBI"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ppy-qZ-4dY"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="de9-oA-sIu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="uhj-uv-yVq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
+            <point key="canvasLocation" x="878" y="29"/>
         </scene>
     </scenes>
 </document>
