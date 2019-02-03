@@ -12,12 +12,13 @@ class CustomControl: UIControl {
     
     // MARK: - Properties
     
-    var value: Int = 1
+    var value: Int = 0
     private var componentDimension: CGFloat = 40.0
     private var componentCount = 5
-    private var componentActiveColor = UIColor.black
-    private var componentInactiveColor = UIColor.gray
+    private var activeColor = UIColor.black
+    private var inactiveColor = UIColor.gray
     var starLabels = [UILabel]()
+    var wasTriggered: Bool = false
     
     // MARK: - Initializer
     
@@ -27,22 +28,17 @@ class CustomControl: UIControl {
     }
     
     private func setup() {
-        for n in 0...componentCount {
-            let size = CGSize(width: componentDimension, height: componentDimension)
-            
-            let location = n * Int((bounds.maxX / 10))
-            let gap = Int(bounds.maxX / 5)
-            let origin = CGPoint(x: location + gap, y: Int(bounds.size.height / 2))
-            let frame = CGRect(origin: origin, size: size)
-            
-            let label = UILabel(frame: frame)
+        var xCoordinate: CGFloat = -40.0
+        
+        for n in 0...4 {
+            xCoordinate += 8.0 + componentDimension
+            let label = UILabel(frame: CGRect(x: xCoordinate, y: 0.0, width: componentDimension, height: componentDimension))
             label.tag = n + 1
             label.font = UIFont.boldSystemFont(ofSize: 32.0)
             label.text = "✩"
             label.textAlignment = .center
-            
-            label.textColor = label.tag == 1 ? componentActiveColor : componentInactiveColor
-            
+            label.textColor = inactiveColor
+
             addSubview(label)
             starLabels.append(label)
         }
@@ -59,6 +55,7 @@ class CustomControl: UIControl {
     
     override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
         updateValue(at: touch)
+        sendActions(for: [.touchUpInside])
         return true
     }
     
@@ -74,6 +71,8 @@ class CustomControl: UIControl {
     }
     
     override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
+        defer { super.endTracking(touch, with: event) }
+        
         guard let touch = touch else { return }
         let touchPoint = touch.location(in: self)
         if bounds.contains(touchPoint) {
@@ -92,6 +91,26 @@ class CustomControl: UIControl {
     
     private func updateValue(at touch: UITouch) {
         
+        for label in starLabels {
+            let touchPoint = touch.location(in: label)
+            if label.bounds.contains(touchPoint) {
+                label.performFlare()
+                value = label.tag
+                sendActions(for: [.valueChanged])
+            }
+            label.textColor = label.tag <= value ? activeColor : inactiveColor
+        }
     }
-    
+}
+
+extension UIView {
+    // "Flare view" animation sequence
+    func performFlare() {
+        func flare()   { transform = CGAffineTransform(scaleX: 1.6, y: 1.6) }
+        func unflare() { transform = .identity }
+        
+        UIView.animate(withDuration: 0.3,
+                       animations: { flare() },
+                       completion: { _ in UIView.animate(withDuration: 0.1) { unflare() }})
+    }
 }

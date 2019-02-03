@@ -29,35 +29,29 @@
         <!--View Controller-->
         <scene sceneID="vxb-L3-fGv">
             <objects>
-                <viewController id="cta-bj-BrO" sceneMemberID="viewController">
+                <viewController id="cta-bj-BrO" customClass="ViewController" customModule="RatingStars" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dOa-GG-PUb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view verifyAmbiguity="ignoreSizes" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AxD-Tx-tM4" customClass="CustomControl" customModule="RatingStars" customModuleProvider="target">
+                            <view verifyAmbiguity="ignoreSizes" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AxD-Tx-tM4" customClass="CustomControl" customModule="RatingStars" customModuleProvider="target">
                                 <rect key="frame" x="16" y="273.5" width="343" height="120"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="HZd-dg-P5u"/>
-                                </constraints>
                                 <connections>
-                                    <action selector="updateRating:" destination="uhj-uv-yVq" eventType="valueChanged" id="BPS-dF-HHw"/>
+                                    <action selector="updateRating:" destination="cta-bj-BrO" eventType="valueChanged" id="t1J-6H-YxT"/>
                                 </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.92156857250000002" green="0.92156863209999995" blue="0.92156857250000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="AxD-Tx-tM4" secondAttribute="trailing" constant="16" id="aa5-wt-odd"/>
-                            <constraint firstItem="AxD-Tx-tM4" firstAttribute="centerY" secondItem="dOa-GG-PUb" secondAttribute="centerY" id="hwK-H3-hQ0"/>
-                            <constraint firstItem="AxD-Tx-tM4" firstAttribute="centerX" secondItem="dOa-GG-PUb" secondAttribute="centerX" id="khY-bH-Mlb"/>
-                            <constraint firstItem="AxD-Tx-tM4" firstAttribute="leading" secondItem="dOa-GG-PUb" secondAttribute="leading" constant="16" id="uf8-Oe-oli"/>
+                            <constraint firstItem="AxD-Tx-tM4" firstAttribute="centerY" secondItem="dOa-GG-PUb" secondAttribute="centerY" id="bMM-F7-z8W"/>
+                            <constraint firstItem="AxD-Tx-tM4" firstAttribute="centerX" secondItem="dOa-GG-PUb" secondAttribute="centerX" id="m66-iZ-hp8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="k5b-dq-kBI"/>
                     </view>
                     <navigationItem key="navigationItem" id="ppy-qZ-4dY"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="de9-oA-sIu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="uhj-uv-yVq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="878" y="29"/>
         </scene>

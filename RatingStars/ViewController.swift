@@ -8,15 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "User Rating"
     }
 
-    @IBAction func updateRating(_ ratingControl: CustomControl) {
-        let rating = ratingControl.value
+    @IBAction func updateRating(_ sender: CustomControl) {
+        let rating = sender.value
         let star = rating == 1 ? "star" : "stars"
         title = "User Rating: \(rating) \(star)"
     }
